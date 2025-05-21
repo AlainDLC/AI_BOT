@@ -1,27 +1,12 @@
-# 🤖 Build AI Chatbot in React JS & CSS
+# React + Vite
 
-A modern and responsive AI chatbot built with React.js and styled with pure CSS. This project demonstrates how to integrate a generative AI API (like Google Gemini, OpenAI, or others) into a sleek frontend interface, enabling intelligent and dynamic conversations.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-> **Fork this project to explore new ideas and build your own AI-powered assistants.**
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🚀 Features
+## Expanding the ESLint configuration
 
-- ⚛️ Built with **React.js** (Functional components & Hooks)
-- 💬 AI-powered chatbot interface
-- 🎨 Custom-styled using **CSS**
-- 🔑 Plug-and-play API integration (Google Gemini, OpenAI, etc.)
-- 🧠 Handles user prompts and displays AI responses in real time
-- 📱 Fully responsive for both desktop and mobile
-
----
-
-## 🛠️ Tech Stack
-
-- React.js
-- CSS
-- Axios (or Fetch API)
-- Generative AI API (Google Gemini, OpenAI GPT, or Hugging Face Inference)
-
----
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
