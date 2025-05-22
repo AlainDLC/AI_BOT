@@ -2,9 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { ChatbotIcon } from "./components/ChatbotIcon";
 import { ChatForm } from "./components/CHatForm";
 import { ChatMessage } from "./components/ChatMessage";
+import { companyInfo } from "./components/companyinfo";
 
 export const App = () => {
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState([
+    {
+      hideInChat: true,
+      role: "model",
+      text: companyInfo,
+    },
+  ]);
   const [showChatBot, setShowChatbot] = useState(false);
   const chatBodyRef = useRef();
 
@@ -64,7 +71,7 @@ export const App = () => {
         <div className="chat-header">
           <div className="header-info">
             <ChatbotIcon />
-            <h2 className="logo-text">AI CHATBOT</h2>
+            <h2 className="logo-text">DLC T PIXE SYSTEM</h2>
           </div>
           <button
             onClick={() => setShowChatbot((prev) => !prev)}
@@ -78,8 +85,11 @@ export const App = () => {
         {/* Chatbot Body */}
         <div ref={chatBodyRef} className="chat-body">
           <div className="message bot-message">
-            <ChatbotIcon />
-            <p className="message-text">AI CHATBOT</p>
+            <p className="message-text">
+              Hi there! 👋 Welcome to DLC-PIXE-SYSTEM. Are you looking for help
+              to grow or improve your business with expert frontend or fullstack
+              development?
+            </p>
           </div>
           {/* Render chat history dynamisk text */}
           {chatHistory.map((chat, index) => (

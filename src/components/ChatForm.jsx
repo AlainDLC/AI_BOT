@@ -34,7 +34,7 @@ export const ChatForm = ({
         ...chatHistory,
         {
           role: "user",
-          text: userMessage,
+          text: `Using the details provided above, please adress this query ${userMessage}`,
         },
       ]),
       600
