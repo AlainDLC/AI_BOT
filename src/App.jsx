@@ -6,8 +6,39 @@ import { ChatMessage } from "./components/ChatMessage";
 export const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
 
-  const generateBotResponse = (history) => {
-    console.log(history);
+  const updateHistory = (text) => {
+    setChatHistory((prev) => [
+      ...prev.filter((msg) => msg.text != "Hmmmm...."),
+      { role: "model", text },
+    ]);
+  };
+
+  // key API REQUEST
+  const generateBotResponse = async (history) => {
+    history = history?.map(({ role, text }) => ({ role, parts: [{ text }] }));
+    const reguestResponse = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents: history }),
+    };
+
+    try {
+      const respone = await fetch(
+        import.meta.env.VITE_API_URL,
+        reguestResponse
+      );
+      const data = await respone.json();
+
+      console.log(data);
+      if (!respone.ok) throw new Error(data.error.message || "Nåt hände fel");
+
+      const apiResponseText = data.candidates[0].content.parts[0].text
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .trim();
+      updateHistory(apiResponseText);
+    } catch (error) {
+      console.error("API", error);
+    }
   };
 
   return (
