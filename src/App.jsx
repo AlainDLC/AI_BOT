@@ -29,12 +29,12 @@ export const App = () => {
       );
       const data = await respone.json();
 
-      console.log(data);
       if (!respone.ok) throw new Error(data.error.message || "Nåt hände fel");
 
       const apiResponseText = data.candidates[0].content.parts[0].text
         .replace(/\*\*(.*?)\*\*/g, "$1")
         .trim();
+
       updateHistory(apiResponseText);
     } catch (error) {
       console.error("API", error);
