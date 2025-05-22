@@ -18,13 +18,11 @@ export const App = () => {
         {/* Chatbot Body */}
         <div className="chat-body">
           <div className="message bot-message">
-            <ChatbotIcon />
-            <p className="message-text">
-              Hola, 😀 ¿en qué puedo asistirle el día de hoy?
-            </p>
+            {/* <ChatbotIcon />  */}
+            <p className="message-text">AI CHATBOT</p>
           </div>
           <div className="message user-message">
-            <p className="message-text">👑👑👑👑👑👑 Lorem ipsum dolor</p>
+            <p className="message-text">Lorem ipsum dolor</p>
           </div>
         </div>
 
