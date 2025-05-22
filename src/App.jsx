@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChatbotIcon } from "./components/ChatbotIcon";
 import { ChatForm } from "./components/CHatForm";
 import { ChatMessage } from "./components/ChatMessage";
 
 export const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
+  const [showChatBot, setShowChatbot] = useState(false);
+  const chatBodyRef = useRef();
 
-  const updateHistory = (text) => {
+  const updateHistory = (text, isError = false) => {
     setChatHistory((prev) => [
       ...prev.filter((msg) => msg.text != "Hmmmm...."),
-      { role: "model", text },
+      { role: "model", text, isError },
     ]);
   };
 
@@ -37,12 +39,26 @@ export const App = () => {
 
       updateHistory(apiResponseText);
     } catch (error) {
-      console.error("API", error);
+      updateHistory(error.message, true);
     }
   };
 
+  useEffect(() => {
+    chatBodyRef.current.scrollTo({
+      top: chatBodyRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [chatHistory]);
+
   return (
-    <div className="container">
+    <div className={`container ${showChatBot ? "show-chatbot" : ""}`}>
+      <button
+        onClick={() => setShowChatbot((prev) => !prev)}
+        id="chatbot-toogler"
+      >
+        <span className="material-symbols-outlined">mode_comment</span>
+        <span className="material-symbols-outlined">close</span>
+      </button>
       <div className="chatbot-popup">
         {/* Chatbot Header */}
         <div className="chat-header">
@@ -50,13 +66,17 @@ export const App = () => {
             <ChatbotIcon />
             <h2 className="logo-text">AI CHATBOT</h2>
           </div>
-          <button type="button" className="material-symbols-outlined">
+          <button
+            onClick={() => setShowChatbot((prev) => !prev)}
+            type="button"
+            className="material-symbols-outlined"
+          >
             keyboard_arrow_down
           </button>
         </div>
 
         {/* Chatbot Body */}
-        <div className="chat-body">
+        <div ref={chatBodyRef} className="chat-body">
           <div className="message bot-message">
             <ChatbotIcon />
             <p className="message-text">AI CHATBOT</p>

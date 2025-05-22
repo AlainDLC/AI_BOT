@@ -8,20 +8,35 @@
 
 body {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   min-height: 100vh;
   background: linear-gradient(#f4f0ff, #dacdff);
 }
 
 .chatbot-popup {
-  position: relative;
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  bottom: 90px;
+  right: 35px;
   width: 420px;
+  transform: scale(0.2);
+  transform-origin: bottom right;
   overflow: hidden;
   background: #ffff;
   border-radius: 15px;
   box-shadow: 0 0 128px 0 rgb(0, 0, 0, 0.1), 0 32px 64px -48px rgb(0, 0, 0, 0.5);
+  transition: all 0.1s ease;
+}
+
+.container.show-chatbot .chatbot-popup {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.container.show-chatbot #chatbot-toogler {
+  transform: rotate(90deg);
 }
 
 .chatbot-popup .chat-header {
@@ -127,6 +142,10 @@ body {
   align-items: flex-end;
 }
 
+.chat-body .message.error .message-text {
+  color: #ff0000;
+}
+
 .chat-footer {
   position: absolute;
   bottom: 0;
@@ -177,4 +196,34 @@ body {
 
 .chat-form .message-input:valid ~ button {
   display: block;
+}
+
+#chatbot-toogler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background: #6d4fc2;
+  transition: all 0.2s ease;
+}
+
+#chatbot-toogler span {
+  position: absolute;
+  color: #fff;
+}
+
+#chatbot-toogler span:last-child,
+.container.show-chatbot #chatbot-toogler span:first-child {
+  opacity: 0;
+}
+
+.container.show-chatbot #chatbot-toogler span:last-child {
+  opacity: 1;
 }
