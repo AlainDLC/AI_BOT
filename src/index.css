@@ -81,11 +81,13 @@ body {
   overflow-y: auto;
   padding: 25px 22px;
   margin-bottom: 92px;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd3f9 transparent;
 }
 
 .chat-body .message {
   display: flex;
-  gap: 11px;
+
   align-items: center;
 }
 
@@ -96,11 +98,9 @@ body {
 .chat-body .bot-message img {
   height: 50px;
   width: 50px;
-
+  object-fit: cover;
   margin-right: 80px;
   margin-bottom: 2px;
-  background: #ffff;
-  border-radius: 50%;
 }
 
 .chat-body .message .message-text {
