@@ -227,3 +227,30 @@ body {
 .container.show-chatbot #chatbot-toogler span:last-child {
   opacity: 1;
 }
+
+@media (max-width: 480px) {
+  .chatbot-popup {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    overflow: auto !important;
+  }
+
+  .chat-body {
+    height: calc(100vh - 110px); /* justera så chatten får plats */
+    overflow-y: auto;
+  }
+
+  .chat-footer {
+    position: relative !important; /* så att input följer med scrollen */
+  }
+
+  body {
+    overflow: hidden; /* undvik bakgrundscroll */
+  }
+}

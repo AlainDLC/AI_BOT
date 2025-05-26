@@ -27,7 +27,7 @@ export const ChatForm = ({
           ...history,
           {
             role: "model",
-            text: "Hmmmm....",
+            text: "Thinking....",
           },
         ]),
       generateBotResponse([
