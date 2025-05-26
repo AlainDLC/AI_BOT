@@ -3,6 +3,7 @@ import { ChatbotIcon } from "./ChatbotIcon";
 import { ChatForm } from "./CHatForm";
 import { ChatMessage } from "./ChatMessage";
 import { companyInfo } from "./companyinfo";
+import "../ai.css";
 
 export const Aiboxen = () => {
   // gör denna till en komponent iställt så man kan sätta inbäddad script
@@ -88,9 +89,8 @@ export const Aiboxen = () => {
           <div className="message bot-message">
             <ChatbotIcon />
             <p className="message-text">
-              Hi there! 👋 Welcome to DLC-PIXE-SYSTEM. Are you looking for help
-              to grow or improve your business with expert frontend or fullstack
-              development?
+              Hi there! 👋Welcome. Are you looking for help to grow or improve
+              your business with expert frontend or fullstack development?
             </p>
           </div>
           {/* Render chat history dynamisk text */}
